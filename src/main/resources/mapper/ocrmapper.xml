@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mc.app.repository.ScanOcrRepository">
+
+    <insert id="save" parameterType="ScanOcr">
+        INSERT INTO page (page_num, page_img, ocr_text, tts_url, tale_id)
+        VALUES (#{pageNum}, #{pageImg}, #{ocrText}, #{ttsUrl}, #{taleId})
+    </insert>
+
+    <!-- 메인 페이지 보여주기 -->
+    <select id="select" resultType="ScanOcr">
+        SELECT *
+        FROM page p
+        WHERE p.page_id IN (
+            SELECT MIN(page_id)
+            FROM page
+            GROUP BY tale_id
+        )
+        ORDER BY tale_id DESC
+    </select>
+
+</mapper>
