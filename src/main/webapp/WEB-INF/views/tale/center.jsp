@@ -1,103 +1,100 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-  <title>동화책 읽기</title>
-  <style>
-    .container {
-      text-align: center;
-      margin-top: 50px;
-    }
 
-    .book-img {
-      max-width: 53%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+<style>
+  .container {
+    text-align: center;
+    margin-top: 50px;
+  }
 
-    .progress-container {
-      width: 60%;
-      max-width: 600px;
-      height: 10px;
-      background-color: #eee;
-      border-radius: 5px;
-      overflow: hidden;
-      margin: 20px auto 0;
-    }
+  .book-img {
+    max-width: 53%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
 
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background-color: #ffa07a;
-      transition: width 0.1s linear;
-    }
+  .progress-container {
+    width: 60%;
+    max-width: 600px;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px auto 0;
+  }
 
-    .controls {
-      margin-top: 20px;
-    }
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #ffa07a;
+    transition: width 0.1s linear;
+  }
 
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      background-color: #ffa07a;
-      border: none;
-      color: white;
-      cursor: pointer;
-    }
+  .controls {
+    margin-top: 20px;
+  }
 
-    button:hover {
-      background-color: #ff8c5a;
-    }
+  .container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #ffa07a;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
 
-    .page-text {
-      display: none;
-      font-size: 22px;
-      color: #222;
-      background-color: #fffbe6;
-      border: 1px solid #ffe58f;
-      padding: 16px;
-      border-radius: 12px;
-      width: 80%;
-      max-width: 700px;
-      margin: 30px auto 0;
-      font-family: 'Gowun Batang', serif;
-      line-height: 1.7;
-      white-space: pre-wrap;
-    }
+  .container button:hover {
+    background-color: #ff8c5a;
+  }
 
-    /* 모달 스타일 */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-color: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
+  .page-text {
+    display: none;
+    font-size: 22px;
+    color: #222;
+    background-color: #fffbe6;
+    border: 1px solid #ffe58f;
+    padding: 16px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 700px;
+    margin: 30px auto 0;
+    font-family: 'Gowun Batang', serif;
+    line-height: 1.7;
+    white-space: pre-wrap;
+  }
 
-    .modal-content {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 16px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
 
-    .close-btn {
-      margin-top: 20px;
-      font-size: 16px;
-      background-color: #ff9999;
-    }
-  </style>
-</head>
-<body>
+  .modal-content {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+
+  .close-btn {
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: #ff9999;
+  }
+</style>
+
+
 <div class="container">
   <img id="pageImg" class="book-img" src="" alt="동화 이미지" />
   <div class="progress-container">
@@ -243,6 +240,3 @@
     readerApp.init();
   });
 </script>
-
-</body>
-</html>

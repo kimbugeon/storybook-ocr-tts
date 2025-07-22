@@ -1,129 +1,117 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>도서 스캔</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #fffaf3;
-            margin: 0;
-            padding: 20px;
-        }
 
-        .scan-container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: #fff;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    .scan-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        text-align: center;
+    }
 
-        .btn {
-            background-color: #ffa07a;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-        }
+    .btn {
+        background-color: #ffa07a;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+    }
 
-        .btn:hover {
-            background-color: #ff8c5a;
-        }
+    .btn:hover {
+        background-color: #ff8c5a;
+    }
 
-        #imageInput {
-            display: none;
-        }
+    #imageInput {
+        display: none;
+    }
 
-        .file-label {
-            display: inline-block;
-            background-color: #ddd;
-            padding: 10px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+    .file-label {
+        display: inline-block;
+        background-color: #ddd;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
 
-        .file-label:hover {
-            background-color: #ccc;
-        }
+    .file-label:hover {
+        background-color: #ccc;
+    }
 
-        .file-count {
-            font-size: 16px;
-            font-weight: bold;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            color: #555;
-        }
+    .file-count {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #555;
+    }
 
-        .preview-container {
-            margin-top: 20px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+    .preview-container {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
 
-        .preview-block {
-            background: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            padding: 12px;
-            text-align: center;
-        }
+    .preview-block {
+        background: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        padding: 12px;
+        text-align: center;
+    }
 
-        .preview-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 6px;
-            background-color: #f0f0f0;
-            display: block;
-        }
+    .preview-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 6px;
+        background-color: #f0f0f0;
+        display: block;
+    }
 
-        .file-info {
-            font-size: 13px;
-            color: #444;
-            word-break: break-word;
-            margin-top: 6px;
-        }
+    .file-info {
+        font-size: 13px;
+        color: #444;
+        word-break: break-word;
+        margin-top: 6px;
+    }
 
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .modal-content {
-            background: #fff;
-            padding: 30px 40px;
-            border-radius: 12px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            text-align: center;
-        }
+    .modal-content {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 12px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        text-align: center;
+    }
 
-        #uploadForm {
-            border: 2px dashed #ccc;
-            padding: 20px;
-        }
-    </style>
-</head>
-<body>
+    #uploadForm {
+        border: 2px dashed #ccc;
+        padding: 20px;
+    }
+</style>
+
 
 <div class="scan-container">
     <h2>📚 도서 스캔</h2>
@@ -244,6 +232,3 @@
         ocrScan.init();
     });
 </script>
-
-</body>
-</html>
