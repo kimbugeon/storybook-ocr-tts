@@ -1,0 +1,76 @@
+/* 공통 스타일 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #fffaf3;
+}
+
+/* header 고정 영역 */
+.nav-wrapper {
+    background-color: #ffe9c9;
+    border-bottom: 1px solid #eee;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 1000;
+}
+
+.nav-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.nav-header a {
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 80px;
+}
+
+.nav-header a.active {
+    color: #ff914d;
+}
+
+.nav-header i {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.nav-right {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info {
+    color: #333;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: #555;
+}
+
+.nav-right a:hover {
+    text-decoration: underline;
+}
+
+/* 콘텐츠 시작 위치 확보 */
+.main-container {
+    padding: 30px 20px;
+    margin-top: 60px;  /* 헤더 높이 만큼 */
+}
