@@ -17,4 +17,12 @@
         DELETE FROM user WHERE user_id=#{userId}
     </delete>
 
+    <update id="update" parameterType="user">
+        UPDATE user
+        SET
+            name = #{name},
+            password = #{password}
+        WHERE user_id = #{userId}
+    </update>
+
 </mapper>
