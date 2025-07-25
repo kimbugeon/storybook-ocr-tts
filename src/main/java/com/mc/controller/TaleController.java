@@ -2,7 +2,6 @@ package com.mc.controller;
 
 import com.mc.app.dto.Tale;
 import com.mc.app.dto.User;
-import com.mc.app.service.ScanOcrService;
 import com.mc.app.service.TaleService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -36,7 +34,6 @@ public class TaleController {
         }
 
         List<Tale> tale = taleService.getByTaleId(taleId);
-        log.info("tale:........." + tale);
 
         model.addAttribute("tale", tale);
         model.addAttribute("center", dir + "center");
